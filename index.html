@@ -252,16 +252,16 @@
 
     /* ===== smartphone ===== */
     @media (max-width: 768px) {
-      /* スマホでは sticky 構造をやめて普通の縦並びに戻す */
       .hero-wrap {
-        height: auto;
+        position: relative;
+        height: 120vh;
         background: #000;
-        overflow: visible;
+        overflow: clip;
       }
 
       .hero {
-        position: relative;
-        top: auto;
+        position: sticky;
+        top: 0;
         height: 62vh;
         min-height: 420px;
       }
@@ -290,6 +290,8 @@
       }
 
       .intro-panel {
+        position: relative;
+        z-index: 5;
         margin-top: -18px;
         border-radius: 22px 22px 0 0;
         min-height: auto;
@@ -368,6 +370,10 @@
 
     /* ===== very small smartphone ===== */
     @media (max-width: 480px) {
+      .hero-wrap {
+        height: 112vh;
+      }
+
       .hero {
         height: 58vh;
         min-height: 380px;
@@ -384,6 +390,7 @@
       }
 
       .intro-panel {
+        margin-top: -14px;
         padding: 46px 16px 64px;
       }
 
