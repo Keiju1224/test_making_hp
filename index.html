@@ -1,63 +1,354 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ホームページ</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav {
-            background-color: #444;
-            padding: 0.5rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-        }
-        main {
-            padding: 2rem;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>naisugai</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #111;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       Header
+    ========================= */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 40px;
+      color: #fff;
+      mix-blend-mode: difference;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       Hero
+    ========================= */
+    .hero-wrap {
+      position: relative;
+      height: 190vh;
+      background: #000;
+    }
+
+    .hero {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 1;
+      background: #000;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),
+        url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=80")
+        center center / cover no-repeat;
+      transform: scale(1.04);
+    }
+
+    .hero-content {
+      position: absolute;
+      left: 28px;
+      bottom: 26px;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .hero-content p {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      margin-bottom: 12px;
+      opacity: 0.92;
+    }
+
+    /* hero文字は固定寄りにする */
+    .hero-content h1 {
+      font-size: 64px;
+      line-height: 0.95;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    /* =========================
+       Intro Panel
+    ========================= */
+    .intro-panel {
+      position: relative;
+      z-index: 5;
+      margin-top: -20px;
+      background: #fff;
+      border-radius: 30px 30px 0 0;
+      min-height: 100vh;
+      padding: 100px 40px 120px;
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+      border-top: 1px solid #111; /* 細い黒線 */
+    }
+
+    .intro-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .lead {
+      font-size: clamp(30px, 3vw, 48px);
+      line-height: 1.4;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .subtext {
+      max-width: 740px;
+      color: #555;
+      line-height: 1.9;
+      margin-bottom: 72px;
+      font-size: clamp(14px, 1.1vw, 17px);
+    }
+
+    .works {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .work-card {
+      background: #f6f6f6;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #e9e9e9;
+    }
+
+    .work-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .work-card .text {
+      padding: 20px;
+    }
+
+    .work-card h3 {
+      font-size: clamp(16px, 1.2vw, 20px);
+      margin-bottom: 8px;
+    }
+
+    .work-card p {
+      color: #666;
+      line-height: 1.7;
+      font-size: clamp(13px, 1vw, 15px);
+    }
+
+    /* 白パネル以降はheroが見えないように、完全に白背景で覆う */
+    .content-area {
+      position: relative;
+      z-index: 6;
+      background: #fff;
+      border-top: 1px solid #111;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 40px;
+      background: #fff;
+    }
+
+    .section h2 {
+      font-size: clamp(32px, 3vw, 52px);
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .section p {
+      font-size: clamp(14px, 1.1vw, 17px);
+      line-height: 1.9;
+      color: #333;
+      max-width: 720px;
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 28px;
+      border: 1px solid #111;
+      border-radius: 999px;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .contact-button:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    footer {
+      position: relative;
+      z-index: 6;
+      background: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      color: #777;
+      font-size: 14px;
+      border-top: 1px solid #111;
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+    @media (max-width: 900px) {
+      header {
+        padding: 20px;
+      }
+
+      nav {
+        gap: 16px;
+        font-size: 13px;
+      }
+
+      .hero-content {
+        left: 20px;
+        bottom: 22px;
+      }
+
+      .hero-content p {
+        font-size: 11px;
+      }
+
+      /* スマホでは少しだけ小さくするが、可変しすぎない */
+      .hero-content h1 {
+        font-size: 48px;
+      }
+
+      .hero-wrap {
+        height: 175vh;
+      }
+
+      .intro-panel {
+        margin-top: -24px;
+        border-radius: 22px 22px 0 0;
+        padding: 72px 20px 90px;
+      }
+
+      .works {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 90px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>ようこそ</h1>
-    </header>
+  <header>
+    <div class="logo">KEIJU</div>
     <nav>
-        <a href="#home">ホーム</a>
-        <a href="#about">について</a>
-        <a href="#contact">お問い合わせ</a>
+      <a href="#about">About</a>
+      <a href="#works">Works</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <main>
-        <section id="home">
-            <h2>ホーム</h2>
-            <p>ここにコンテンツを追加してください。</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Homepage. All rights reserved.</p>
-    </footer>
+  </header>
+
+  <div class="hero-wrap">
+    <section class="hero">
+      <div class="hero-image"></div>
+      <div class="hero-content">
+        <p>PORTFOLIO / WEB / VISUAL</p>
+        <h1>SCROLL TO<br>DISCOVER</h1>
+      </div>
+    </section>
+
+    <section class="intro-panel" id="about">
+      <div class="intro-inner">
+        <h2 class="lead">
+          印象に残る見せ方を意識した、<br>
+          シンプルなポートフォリオサイト。
+        </h2>
+        <p class="subtext">
+          最初に大きなビジュアルを見せ、スクロールに合わせて白い面がせり上がる構成です。
+          ヒーロー部分はあくまで世界観を見せる領域として固定感を強め、
+          その後のコンテンツ側で情報量やサイズ変化を受け持つようにしています。
+        </p>
+
+        <div class="works" id="works">
+          <div class="work-card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="">
+            <div class="text">
+              <h3>Portfolio Site</h3>
+              <p>ポートフォリオのトップページ試作。</p>
+            </div>
+          </div>
+
+          <div class="work-card">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80" alt="">
+            <div class="text">
+              <h3>Landing Page</h3>
+              <p>ビジュアル重視のレイアウト練習。</p>
+            </div>
+          </div>
+
+          <div class="work-card">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="">
+            <div class="text">
+              <h3>Creative Layout</h3>
+              <p>余白と写真を主役にしたデザイン。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="content-area">
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p>制作の相談やお問い合わせはこちらから。</p>
+      <a class="contact-button" href="mailto:example@gmail.com">お問い合わせ</a>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 Keiju Portfolio</p>
+  </footer>
 </body>
 </html>
