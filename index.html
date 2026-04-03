@@ -32,6 +32,10 @@
       display: block;
     }
 
+    /* =========================
+       Header
+       ※ 使いたくなったらHTML側のコメントアウトを戻す
+    ========================= */
     header {
       position: fixed;
       top: 0;
@@ -59,6 +63,9 @@
       font-weight: 600;
     }
 
+    /* =========================
+       Hero
+    ========================= */
     .hero-wrap {
       position: relative;
       height: 190vh;
@@ -107,13 +114,15 @@
       letter-spacing: -0.03em;
     }
 
+    /* =========================
+       Intro Panel
+    ========================= */
     .intro-panel {
       position: relative;
       z-index: 5;
       margin-top: -40px;
       background: #fff;
       border-radius: 30px 30px 0 0;
-      min-height: 100vh;
       padding: 100px 40px 120px;
       box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
       border-top: 1px solid #111;
@@ -173,6 +182,9 @@
       font-size: clamp(13px, 1vw, 15px);
     }
 
+    /* =========================
+       Contact / Footer
+    ========================= */
     .content-area {
       position: relative;
       z-index: 6;
@@ -239,29 +251,15 @@
 
     /* ===== smartphone ===== */
     @media (max-width: 768px) {
-      header {
-        padding: 18px 20px;
-        mix-blend-mode: normal;
-        color: #111;
-      }
-
-      .logo {
-        font-size: 16px;
-        letter-spacing: 0.18em;
-      }
-
-      nav {
-        gap: 18px;
-        font-size: 12px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-      }
-
+      /* スマホでは sticky 構造をやめて普通の縦並びに戻す */
       .hero-wrap {
-        height: 125vh;
+        height: auto;
+        background: #000;
       }
 
       .hero {
+        position: relative;
+        top: auto;
         height: 62vh;
         min-height: 420px;
       }
@@ -334,6 +332,9 @@
       }
 
       .content-area {
+        position: relative;
+        z-index: 6;
+        background: #fff;
         border-top: 1px solid #111;
       }
 
@@ -365,19 +366,6 @@
 
     /* ===== very small smartphone ===== */
     @media (max-width: 480px) {
-      header {
-        padding: 16px 16px;
-      }
-
-      .logo {
-        font-size: 15px;
-      }
-
-      nav {
-        gap: 14px;
-        font-size: 11px;
-      }
-
       .hero {
         height: 58vh;
         min-height: 380px;
@@ -416,6 +404,8 @@
   </style>
 </head>
 <body>
+
+  <!--
   <header>
     <div class="logo">KEIJU</div>
     <nav>
@@ -424,6 +414,7 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
+  -->
 
   <div class="hero-wrap">
     <section class="hero">
