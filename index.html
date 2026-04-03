@@ -34,7 +34,7 @@
 
     /* =========================
        Header
-       ※ 使いたくなったらHTML側のコメントアウトを戻す
+       使うときはHTML側のコメントアウトを外す
     ========================= */
     header {
       position: fixed;
@@ -66,20 +66,14 @@
     /* =========================
        Hero
     ========================= */
-    .hero-wrap {
-      position: relative;
-      height: 155vh;
-      background: #000;
-      overflow: clip;
-    }
-
-    .hero {
+    .hero-bg {
       position: sticky;
       top: 0;
-      height: 100vh;
+      height: 100svh;
+      min-height: 640px;
       overflow: hidden;
-      z-index: 1;
       background: #000;
+      z-index: 0;
     }
 
     .hero-image {
@@ -95,10 +89,10 @@
     .hero-content {
       position: absolute;
       left: 28px;
+      right: 28px;
       bottom: 26px;
-      z-index: 2;
+      z-index: 1;
       color: #fff;
-      width: calc(100% - 56px);
     }
 
     .hero-content p {
@@ -116,17 +110,20 @@
     }
 
     /* =========================
-       Intro Panel
+       Page / Panels
     ========================= */
-    .intro-panel {
+    .page {
       position: relative;
-      z-index: 5;
+      z-index: 10;
       margin-top: -40px;
+    }
+
+    .intro-panel {
       background: #fff;
       border-radius: 30px 30px 0 0;
-      padding: 100px 40px 120px;
-      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
       border-top: 1px solid #111;
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+      padding: 100px 40px 120px;
     }
 
     .intro-inner {
@@ -183,21 +180,15 @@
       font-size: clamp(13px, 1vw, 15px);
     }
 
-    /* =========================
-       Contact / Footer
-    ========================= */
-    .content-area {
-      position: relative;
-      z-index: 20;
+    .section {
       background: #fff;
       border-top: 1px solid #111;
+      padding: 120px 40px;
     }
 
-    .section {
+    .section-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 120px 40px;
-      background: #fff;
     }
 
     .section h2 {
@@ -221,6 +212,7 @@
       border-radius: 999px;
       transition: 0.3s;
       font-size: 15px;
+      background: #fff;
     }
 
     .contact-button:hover {
@@ -229,14 +221,12 @@
     }
 
     footer {
-      position: relative;
-      z-index: 20;
       background: #fff;
+      border-top: 1px solid #111;
       text-align: center;
       padding: 60px 20px;
       color: #777;
       font-size: 14px;
-      border-top: 1px solid #111;
     }
 
     /* ===== tablet ===== */
@@ -252,30 +242,19 @@
 
     /* ===== smartphone ===== */
     @media (max-width: 768px) {
-      .hero-wrap {
-        position: relative;
-        height: 120vh;
-        background: #000;
-        overflow: clip;
-      }
-
-      .hero {
-        position: sticky;
-        top: 0;
-        height: 62vh;
+      .hero-bg {
         min-height: 420px;
+        height: 100svh;
       }
 
       .hero-image {
         transform: scale(1.02);
-        background-position: center center;
       }
 
       .hero-content {
         left: 20px;
         right: 20px;
         bottom: 20px;
-        width: auto;
       }
 
       .hero-content p {
@@ -289,12 +268,12 @@
         line-height: 0.95;
       }
 
-      .intro-panel {
-        position: relative;
-        z-index: 5;
+      .page {
         margin-top: -18px;
+      }
+
+      .intro-panel {
         border-radius: 22px 22px 0 0;
-        min-height: auto;
         padding: 54px 20px 72px;
       }
 
@@ -335,13 +314,6 @@
         font-size: 14px;
       }
 
-      .content-area {
-        position: relative;
-        z-index: 20;
-        background: #fff;
-        border-top: 1px solid #111;
-      }
-
       .section {
         padding: 72px 20px;
       }
@@ -370,12 +342,7 @@
 
     /* ===== very small smartphone ===== */
     @media (max-width: 480px) {
-      .hero-wrap {
-        height: 112vh;
-      }
-
-      .hero {
-        height: 58vh;
+      .hero-bg {
         min-height: 380px;
       }
 
@@ -389,8 +356,11 @@
         font-size: 34px;
       }
 
-      .intro-panel {
+      .page {
         margin-top: -14px;
+      }
+
+      .intro-panel {
         padding: 46px 16px 64px;
       }
 
@@ -425,15 +395,15 @@
   </header>
   -->
 
-  <div class="hero-wrap">
-    <section class="hero">
-      <div class="hero-image"></div>
-      <div class="hero-content">
-        <p>PORTFOLIO / WEB / VISUAL</p>
-        <h1>SCROLL TO<br>DISCOVER</h1>
-      </div>
-    </section>
+  <section class="hero-bg">
+    <div class="hero-image"></div>
+    <div class="hero-content">
+      <p>PORTFOLIO / WEB / VISUAL</p>
+      <h1>SCROLL TO<br>DISCOVER</h1>
+    </div>
+  </section>
 
+  <main class="page">
     <section class="intro-panel" id="about">
       <div class="intro-inner">
         <h2 class="lead">
@@ -473,15 +443,15 @@
         </div>
       </div>
     </section>
-  </div>
 
-  <div class="content-area">
     <section class="section" id="contact">
-      <h2>Contact</h2>
-      <p>制作の相談やお問い合わせはこちらから。</p>
-      <a class="contact-button" href="mailto:example@gmail.com">お問い合わせ</a>
+      <div class="section-inner">
+        <h2>Contact</h2>
+        <p>制作の相談やお問い合わせはこちらから。</p>
+        <a class="contact-button" href="mailto:example@gmail.com">お問い合わせ</a>
+      </div>
     </section>
-  </div>
+  </main>
 
   <footer>
     <p>© 2026 Keiju Portfolio</p>
