@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>naisugai</title>
+  <title>Keiju Portfolio</title>
   <style>
     * {
       margin: 0;
@@ -17,7 +17,7 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #ffffff;
+      background: #fff;
       color: #111;
       overflow-x: hidden;
     }
@@ -27,9 +27,11 @@
       text-decoration: none;
     }
 
-    /* =========================
-       Header
-    ========================= */
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     header {
       position: fixed;
       top: 0;
@@ -57,9 +59,6 @@
       font-weight: 600;
     }
 
-    /* =========================
-       Hero
-    ========================= */
     .hero-wrap {
       position: relative;
       height: 190vh;
@@ -91,6 +90,7 @@
       bottom: 26px;
       z-index: 2;
       color: #fff;
+      width: calc(100% - 56px);
     }
 
     .hero-content p {
@@ -100,7 +100,6 @@
       opacity: 0.92;
     }
 
-    /* hero文字は固定寄りにする */
     .hero-content h1 {
       font-size: 64px;
       line-height: 0.95;
@@ -108,19 +107,16 @@
       letter-spacing: -0.03em;
     }
 
-    /* =========================
-       Intro Panel
-    ========================= */
     .intro-panel {
       position: relative;
       z-index: 5;
-      margin-top: -20px;
+      margin-top: -40px;
       background: #fff;
       border-radius: 30px 30px 0 0;
       min-height: 100vh;
       padding: 100px 40px 120px;
       box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
-      border-top: 1px solid #111; /* 細い黒線 */
+      border-top: 1px solid #111;
     }
 
     .intro-inner {
@@ -160,7 +156,6 @@
       width: 100%;
       height: 260px;
       object-fit: cover;
-      display: block;
     }
 
     .work-card .text {
@@ -178,7 +173,6 @@
       font-size: clamp(13px, 1vw, 15px);
     }
 
-    /* 白パネル以降はheroが見えないように、完全に白背景で覆う */
     .content-area {
       position: relative;
       z-index: 6;
@@ -232,49 +226,191 @@
       border-top: 1px solid #111;
     }
 
-    /* =========================
-       Responsive
-    ========================= */
-    @media (max-width: 900px) {
+    /* ===== tablet ===== */
+    @media (max-width: 1024px) {
+      .works {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-content h1 {
+        font-size: 56px;
+      }
+    }
+
+    /* ===== smartphone ===== */
+    @media (max-width: 768px) {
       header {
-        padding: 20px;
+        padding: 18px 20px;
+        mix-blend-mode: normal;
+        color: #111;
+      }
+
+      .logo {
+        font-size: 16px;
+        letter-spacing: 0.18em;
       }
 
       nav {
-        gap: 16px;
-        font-size: 13px;
+        gap: 18px;
+        font-size: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .hero-wrap {
+        height: 125vh;
+      }
+
+      .hero {
+        height: 62vh;
+        min-height: 420px;
+      }
+
+      .hero-image {
+        transform: scale(1.02);
+        background-position: center center;
       }
 
       .hero-content {
         left: 20px;
-        bottom: 22px;
+        right: 20px;
+        bottom: 20px;
+        width: auto;
       }
 
       .hero-content p {
-        font-size: 11px;
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        margin-bottom: 10px;
       }
 
-      /* スマホでは少しだけ小さくするが、可変しすぎない */
       .hero-content h1 {
-        font-size: 48px;
-      }
-
-      .hero-wrap {
-        height: 175vh;
+        font-size: 42px;
+        line-height: 0.95;
       }
 
       .intro-panel {
-        margin-top: -24px;
+        margin-top: -18px;
         border-radius: 22px 22px 0 0;
-        padding: 72px 20px 90px;
+        min-height: auto;
+        padding: 54px 20px 72px;
+      }
+
+      .lead {
+        font-size: 28px;
+        line-height: 1.45;
+        margin-bottom: 20px;
+      }
+
+      .subtext {
+        font-size: 14px;
+        line-height: 1.9;
+        margin-bottom: 40px;
       }
 
       .works {
         grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .work-card {
+        border-radius: 16px;
+      }
+
+      .work-card img {
+        height: 220px;
+      }
+
+      .work-card .text {
+        padding: 18px;
+      }
+
+      .work-card h3 {
+        font-size: 16px;
+      }
+
+      .work-card p {
+        font-size: 14px;
+      }
+
+      .content-area {
+        border-top: 1px solid #111;
       }
 
       .section {
-        padding: 90px 20px;
+        padding: 72px 20px;
+      }
+
+      .section h2 {
+        font-size: 26px;
+        margin-bottom: 18px;
+      }
+
+      .section p {
+        font-size: 14px;
+        line-height: 1.9;
+      }
+
+      .contact-button {
+        margin-top: 22px;
+        padding: 14px 24px;
+        font-size: 14px;
+      }
+
+      footer {
+        padding: 34px 20px 42px;
+        font-size: 13px;
+      }
+    }
+
+    /* ===== very small smartphone ===== */
+    @media (max-width: 480px) {
+      header {
+        padding: 16px 16px;
+      }
+
+      .logo {
+        font-size: 15px;
+      }
+
+      nav {
+        gap: 14px;
+        font-size: 11px;
+      }
+
+      .hero {
+        height: 58vh;
+        min-height: 380px;
+      }
+
+      .hero-content {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .hero-content h1 {
+        font-size: 34px;
+      }
+
+      .intro-panel {
+        padding: 46px 16px 64px;
+      }
+
+      .lead {
+        font-size: 24px;
+      }
+
+      .subtext {
+        font-size: 13px;
+      }
+
+      .section {
+        padding: 64px 16px;
+      }
+
+      .work-card img {
+        height: 200px;
       }
     }
   </style>
@@ -306,13 +442,13 @@
         </h2>
         <p class="subtext">
           最初に大きなビジュアルを見せ、スクロールに合わせて白い面がせり上がる構成です。
-          ヒーロー部分はあくまで世界観を見せる領域として固定感を強め、
+          ヒーロー部分は世界観を見せる領域として固定感を強め、
           その後のコンテンツ側で情報量やサイズ変化を受け持つようにしています。
         </p>
 
         <div class="works" id="works">
           <div class="work-card">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Portfolio Site">
             <div class="text">
               <h3>Portfolio Site</h3>
               <p>ポートフォリオのトップページ試作。</p>
@@ -320,7 +456,7 @@
           </div>
 
           <div class="work-card">
-            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80" alt="Landing Page">
             <div class="text">
               <h3>Landing Page</h3>
               <p>ビジュアル重視のレイアウト練習。</p>
@@ -328,7 +464,7 @@
           </div>
 
           <div class="work-card">
-            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="Creative Layout">
             <div class="text">
               <h3>Creative Layout</h3>
               <p>余白と写真を主役にしたデザイン。</p>
